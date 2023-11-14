@@ -1,74 +1,98 @@
-// Java program to evaluate
-// a prefix expression.
-import java.io.*;
-import java.util.*;
 import java.awt.*;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Stack;
 
-import static java.lang.System.exit;
+public class Main extends Frame implements ActionListener {
 
-class Main {
+    private TextField expressionTextField;
+    private Button evaluateButton;
+    private Label resultLabel;
 
-    static Boolean isOperand(char c)
-    {
-        // If the character is a digit
-        // then it must be an operand
-        if (Character.isDigit(c))
-            return true;
-        else
-            return false;
+    public Main() {
+        // Set layout manager
+        setLayout(new FlowLayout());
+
+        // GUI components
+        expressionTextField = new TextField(20);
+        evaluateButton = new Button("Evaluate");
+        resultLabel = new Label("Result: ");
+
+        // Add components to the frame
+        add(expressionTextField);
+        add(evaluateButton);
+        add(resultLabel);
+
+        // Add action listener to the button
+        evaluateButton.addActionListener(this);
+
+        // Set frame properties
+        setTitle("Prefix Expression Evaluator");
+        setSize(400, 150);//Note there is a weird bug where you must drag to expand the box to see the result
+        setVisible(true);
     }
 
-    static double evaluatePrefix(String exprsn)
-    {
-        Stack<Double> Stack = new Stack<Double>();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == evaluateButton) {
+            String expression = expressionTextField.getText();
+            try {
+                double result = evaluatePrefix(expression);
+                resultLabel.setText("Result: " + result);
+            } catch (Exception ex) {
+                resultLabel.setText("Error: Invalid expression");
+            }
+        }
+    }
 
-        for (int j = exprsn.length() - 1; j >= 0; j--) {
+    // Evaluate the prefix expression
+    private double evaluatePrefix(String expression) {
+        Stack<Double> stack = new Stack<Double>();
 
-            // Push operand to Stack
-            // To convert exprsn[j] to digit subtract
-            // '0' from exprsn[j].
-            if (isOperand(exprsn.charAt(j)))
-                Stack.push((double)(exprsn.charAt(j)-48));//converts the string to ASCII Value
+        // Process characters from right to left
+        for (int i = expression.length() - 1; i >= 0; i--) {
+            char currentChar = expression.charAt(i);
 
-            else {
-
+            if (isOperand(currentChar)) {
+                stack.push((double) Character.getNumericValue(currentChar));
+            } else if (isOperator(currentChar)) {
                 // Operator encountered
-                // Pop two elements from Stack
-                double o1 = Stack.peek();//Views w/o deleting
-                Stack.pop();
-                double o2 = Stack.peek();
-                Stack.pop();
+                double operand1 = stack.pop();
+                double operand2 = stack.pop();
 
-                // Use switch case to operate on o1
-                // and o2 and perform o1 Or o2.
-                switch (exprsn.charAt(j)) {
+                switch (currentChar) {
                     case '+':
-                        Stack.push(o1 + o2);
-                        break;
-                    case '-':
-                        Stack.push(o1 - o2);
+                        stack.push(operand1 + operand2);
                         break;
                     case '*':
-                        Stack.push(o1 * o2);
+                        stack.push(operand1 * operand2);
+                        break;
+
+                    case '-':
+                        stack.push(operand1 - operand2);
                         break;
                     case '/':
-                        Stack.push(o1 / o2);
-                        break;
-                    default:
-                        System.out.println("Illegal operator");
-                        exit(1);//Exits with 1 instead of zero as it was not expected result
+                        stack.push(operand1/operand2);
                 }
+            } else if (!Character.isWhitespace(currentChar)) {
+                throw new IllegalArgumentException("Invalid character in expression");
             }
         }
 
-        return Stack.peek();
+        return stack.peek();
     }
 
-    /* Driver program to test above function */
-    public static void main(String[] args)
-    {
-        String exprsn = "+9*28";
-        System.out.println(evaluatePrefix(exprsn));
+    // Check if a character is an operand (positive integer)
+    private boolean isOperand(char c) {
+        return Character.isDigit(c);
+    }
+
+    // Check if a character is an operator
+    private boolean isOperator(char c) {
+        return c == '+' || c == '*' || c == '-' || c == '/'; // Add more operators as needed
+    }
+
+    public static void main(String[] args) {
+        new Main();
     }
 }
