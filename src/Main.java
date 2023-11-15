@@ -15,7 +15,7 @@ public class Main extends Frame implements ActionListener {
         //creating objects for the GUI
         expressionTextField = new TextField(20);
         evaluateButton = new Button("Evaluate");
-        resultLabel = new Label("Result: ");
+        resultLabel = new Label("Please enter your equation in the top text box (Remember to put the operator first)");
         // GUI components
         add(expressionTextField, BorderLayout.NORTH);
         add(evaluateButton, BorderLayout.CENTER);
@@ -26,7 +26,7 @@ public class Main extends Frame implements ActionListener {
 
         // Set frame properties
         setTitle("Prefix Expression Evaluator");
-        setSize(400, 150);
+        setSize(550, 150);
         setVisible(true);
     }
 

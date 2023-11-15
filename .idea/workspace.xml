@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="362c7e8d-adcf-48bf-8282-9d1e3f567e4d" name="Changes" comment="Updated workspace.xml settings">
+    <list default="true" id="362c7e8d-adcf-48bf-8282-9d1e3f567e4d" name="Changes" comment="Fixed GUI bug by changing GUI layout from Flowlayout to BorderLayout. I Also removed some dead code&#10;&#10;Updated Main.java and workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +87,7 @@
       <workItem from="1699995030112" duration="9043000" />
       <workItem from="1700063644889" duration="10000" />
       <workItem from="1700063664251" duration="2373000" />
-      <workItem from="1700085996412" duration="344000" />
+      <workItem from="1700085996412" duration="1188000" />
     </task>
     <task id="LOCAL-00001" summary="Need to verify equation is correct and create GUI">
       <option name="closed" value="true" />
@@ -120,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700065129637</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixed GUI bug by changing GUI layout from Flowlayout to BorderLayout. I Also removed some dead code&#10;&#10;Updated Main.java and workspace.xml">
+      <option name="closed" value="true" />
+      <created>1700086853733</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700086853733</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +140,7 @@
     <MESSAGE value="Working on GUI" />
     <MESSAGE value="Rewrote a lot of the main code to better work with the GUI I still need to allow more than 1 char in the equation" />
     <MESSAGE value="Updated workspace.xml settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated workspace.xml settings" />
+    <MESSAGE value="Fixed GUI bug by changing GUI layout from Flowlayout to BorderLayout. I Also removed some dead code&#10;&#10;Updated Main.java and workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed GUI bug by changing GUI layout from Flowlayout to BorderLayout. I Also removed some dead code&#10;&#10;Updated Main.java and workspace.xml" />
   </component>
 </project>
