@@ -11,24 +11,22 @@ public class Main extends Frame implements ActionListener {
 
     public Main() {
         // Set layout manager
-        setLayout(new FlowLayout());
-
-        // GUI components
+        setLayout(new BorderLayout());
+        //creating objects for the GUI
         expressionTextField = new TextField(20);
         evaluateButton = new Button("Evaluate");
         resultLabel = new Label("Result: ");
-
-        // Add components to the frame
-        add(expressionTextField);
-        add(evaluateButton);
-        add(resultLabel);
+        // GUI components
+        add(expressionTextField, BorderLayout.NORTH);
+        add(evaluateButton, BorderLayout.CENTER);
+        add(resultLabel,BorderLayout.SOUTH);
 
         // Add action listener to the button
         evaluateButton.addActionListener(this);
 
         // Set frame properties
         setTitle("Prefix Expression Evaluator");
-        setSize(400, 150);//Note there is a weird bug where you must drag to expand the box to see the result
+        setSize(400, 150);
         setVisible(true);
     }
 
